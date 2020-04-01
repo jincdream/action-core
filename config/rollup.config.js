@@ -76,7 +76,11 @@ const plugins = /** @type {Plugin[]} */ ([
  */
 const CommonConfig = {
   input: {},
-  output: {},
+  output: {
+    globals:{
+      ActionCore: "./index.js"
+    }
+  },
   inlineDynamicImports: true,
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external,
