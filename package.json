@@ -2,9 +2,7 @@
   "name": "",
   "version": "0.0.1",
   "description": "",
-  "keywords": [
-    
-  ],
+  "keywords": [],
   "main": "./bundles/index.umd.js",
   "module": "./esm5/index.js",
   "es2015": "./esm2015/index.js",
@@ -75,7 +73,7 @@
     "tslib": ">=1.9.0"
   },
   "dependencies": {
-    
+    "ts-brand-json": "^0.1.1"
   },
   "devDependencies": {
     "@types/json5": "0.0.30",
