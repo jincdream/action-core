@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/jincdream/selector/compare/v0.1.0...v0.2.0) (2020-04-08)
+
+
+### Bug Fixes
+
+* **dev:** build error ([35b6a64](https://github.com/jincdream/selector/commit/35b6a64))
+
+
+### Features
+
+* **core:** type ([724c898](https://github.com/jincdream/selector/commit/724c898))
+
+
+
 <a name="0.1.0"></a>
 # 0.1.0 (2020-04-01)
 
