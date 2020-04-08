@@ -3,11 +3,11 @@
  * https://github.com/microsoft/TypeScript/issues/27930
  */
 import { JSON, json } from 'ts-brand-json'
-type Types<T> = { [type in keyof T]: Trigger<T> }
-type Trigger<T> = (param: { target: string; data: object }) => T[keyof T]
+type Types<T, D> = { [type in keyof T]: Trigger<T, D> }
+type Trigger<T, D> = (param: { target: string; data: D }) => T[keyof T]
 export default class ActionCore<AllTypes> {
-  private handles: Types<AllTypes> = {} as Types<AllTypes>
-  install(type: keyof AllTypes, actionTrigger: Trigger<AllTypes>) {
+  private handles: Types<AllTypes, {}> = {} as Types<AllTypes, {}>
+  install<D>(type: keyof AllTypes, actionTrigger: Trigger<AllTypes, D>) {
     Object.defineProperty(this.handles, type, {
       value: actionTrigger,
     })
