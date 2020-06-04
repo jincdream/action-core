@@ -16,10 +16,13 @@ describe(`ActionCore`, () => {
 
     let actionCore = new ActionCore<ActionType>()
 
-    actionCore.install<{a: number, f: number, ping: string, q: string}>('mtop', async ({ data, target }) => {
-      console.log(data.a, target)
-      return { a: 123, ...data }
-    })
+    actionCore.install<{ a: number; f: number; ping: string; q: string }>(
+      'mtop',
+      async ({ data, target }) => {
+        console.log(data.a, target)
+        return { a: 123, ...data }
+      }
+    )
     let data = await actionCore.run<{ ping: string }>({
       type: 'mtop',
       target: 'mtop.a.b.c?q=123',
