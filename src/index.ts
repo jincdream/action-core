@@ -18,13 +18,16 @@ export default class ActionCore<AllTypes> {
     })
     delete this.handles[type]
   }
-  run<Param extends { [key: string]: any }>(action: {
+  async run<
+    Param extends { [key: string]: any },
+    Reseponse extends AllTypes[keyof AllTypes] = AllTypes[keyof AllTypes]
+  >(action: {
     type: keyof AllTypes
     target: string
     param?: json<Param>
     data?: Param
     [key: string]: any
-  }) {
+  }): Promise<Reseponse> {
     let { type, param, data, target, ...option } = action
     let handle = this.handles[type]
     let paramData: Param = {} as Param
@@ -48,6 +51,6 @@ export default class ActionCore<AllTypes> {
     return handle({
       target: _target,
       data: { ...paramData, ...data, ...option, ...urlData },
-    })
+    }) as Reseponse
   }
 }

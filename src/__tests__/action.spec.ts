@@ -10,17 +10,21 @@ describe(`ActionCore`, () => {
   })
 
   it(`DEMO`, async () => {
+    type Res = { a: number; f: number; ping: string; q: string }
     type ActionType = {
-      mtop: Promise<{ a: number }>
+      mtop: Promise<Res>
     }
 
     let actionCore = new ActionCore<ActionType>()
 
-    actionCore.install<{ a: number; f: number; ping: string; q: string }>(
+    actionCore.install<Res>(
       'mtop',
       async ({ data, target }) => {
         console.log(data.a, target)
-        return { a: 123, ...data }
+        return {
+          ...data,
+          a: 123,
+        }
       }
     )
     let data = await actionCore.run<{ ping: string }>({
@@ -32,7 +36,6 @@ describe(`ActionCore`, () => {
       data: { ping: 'ss' },
       f: 321,
     })
-
     expect(data).toEqual({
       a: 123,
       f: 321,
