@@ -41,12 +41,14 @@ export default class ActionCore<AllTypes> {
         )
       }
     }
-    let [_target, urlParams = ''] = target.split('?')
+    let [_target, urlParams] = target.split('?')
     let urlData: { [key: string]: any } = {}
-    urlParams.split('&').map((v) => {
-      let [key, value] = v.split('=')
-      urlData[key] = value
-    })
+
+    urlParams &&
+      urlParams.split('&').map((v) => {
+        let [key, value] = v.split('=')
+        urlData[key] = value
+      })
 
     return handle({
       target: _target,
